@@ -1,8 +1,10 @@
-from pycec import CECDevice
+import cec
 
 from fauxmo.plugins import FauxmoPlugin
 
-cecdevice = CECDevice()
+cec.init()
+stereo = cec.Device(CECDEVICE_AUDIOSYSTEM)
+broadcast = cec.Device(CECDEVICE_BROADCAST)
 
 
 class cecplugin(FauxmoPlugin):
@@ -35,14 +37,24 @@ class cecplugin(FauxmoPlugin):
         Returns:
             True if command seems to have run without error.
         """
-        return self.run_cmd(self.on_cmd)
+        if self.on_cmd == "stereo":
+            stereo.power_on()
+            stereo.transmit(CEC_OPCODE_SYSTEM_AUDIO_MODE_REQUEST, bytes([0x00, 0x00]))
+        if self.on_cmd == "airplay":
+            broadcast.transmit(CEC_OPCODE_ACTIVE_SOURCE, bytes([0x10, 0x00]))
+
+        return true
 
     def off(self):
         """Run off command.
         Returns:
             True if command seems to have run without error.
         """
-        return self.run_cmd(self.off_cmd)
+        if self.on_cmd == "stereo":
+            stereo.standby()
+        if self.on_cmd == "airplay":
+            broadcast.transmit(CEC_OPCODE_ACTIVE_SOURCE, bytes([0x20, 0x00]))
+        return true
 
     def get_state(self) -> str:
         """Get device state.
