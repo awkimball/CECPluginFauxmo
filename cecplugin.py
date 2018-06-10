@@ -1,8 +1,8 @@
-from pycec import CecAdapter
+from pycec import CECDevice
 
 from fauxmo.plugins import FauxmoPlugin
 
-cecdevice = CecAdapter()
+cecdevice = CECDevice()
 
 
 class cecplugin(FauxmoPlugin):
