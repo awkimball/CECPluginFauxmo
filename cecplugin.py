@@ -1,4 +1,4 @@
-from pycec import CECDevice
+from pycec import CecAdapter
 
 from fauxmo.plugins import FauxmoPlugin
 
