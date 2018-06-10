@@ -2,7 +2,7 @@ from pycec import CECDevice
 
 from fauxmo.plugins import FauxmoPlugin
 
-cecdevice = CECDevice()
+cecdevice = CecAdapter()
 
 
 class cecplugin(FauxmoPlugin):
@@ -26,7 +26,7 @@ class cecplugin(FauxmoPlugin):
         """
         cmds = cmd.split(",")
         for i in cmds:
-            cecdevice.Tx(i)
+            cecdevice.transmit(i)
 
         return true
 
@@ -55,7 +55,5 @@ class cecplugin(FauxmoPlugin):
         Returns:
             "on" or "off" if `state_cmd` is defined, "unknown" if undefined
         """
-        
-        return "unknown"
 
-      
+        return "unknown"
