@@ -5,7 +5,7 @@ from fauxmo.plugins import FauxmoPlugin
 cecdevice = CECDevice()
 
 
-class CECPlugin(FauxmoPlugin):
+class cecplugin(FauxmoPlugin):
 
     def __init__(self, name: str, port: int, on_cmd: str, off_cmd: str,
                  state_cmd: str = None) -> None:
@@ -24,7 +24,7 @@ class CECPlugin(FauxmoPlugin):
         Returns:
             True if command seems to have run without error
         """
-        cmds = cmd.split(,)
+        cmds = cmd.split(",")
         for i in cmds:
             cecdevice.Tx(i)
 
@@ -55,10 +55,7 @@ class CECPlugin(FauxmoPlugin):
         Returns:
             "on" or "off" if `state_cmd` is defined, "unknown" if undefined
         """
-        if self.state_cmd is None:
-            return "unknown"
+        
+        return "unknown"
 
-        returned_zero = self.run_cmd(self.state_cmd)
-        if returned_zero is True:
-            return "on"
-        return "off"
+      

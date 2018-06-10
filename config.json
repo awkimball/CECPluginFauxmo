@@ -3,20 +3,20 @@
         "ip_address": "auto"
     },
     "PLUGINS": {
-        "CECPlugin": {
-            "path": "abspath/to/cecplugin.py",
+        "cecplugin": {
+            "path": "/home/volumio/CECPluginFauxmo/cecplugin.py",
             "DEVICES": [
                 {
                     "name": "stereo",
                     "port": 1601,
                     "on_cmd": "15:44:6d,15:70:00:00",
-                    "off_cmd": "15:44:6C",
+                    "off_cmd": "15:44:6C"
                 },
                 {
                     "name": "airplay",
                     "port": 1602,
                     "on_cmd": "1F:82:10:00",
-                    "off_cmd": "1F:82:20:00",
+                    "off_cmd": "1F:82:20:00"
                 }
             ]
         }
